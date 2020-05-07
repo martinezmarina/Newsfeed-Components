@@ -136,6 +136,7 @@ function makeArticle(articleAttrs){
   const paragraphTwo = document.createElement('p');
   const paragraphThree = document.createElement('p');
   const expandButton = document.createElement('span');
+  const closeButton = document.createElement('button')
   
   article.appendChild(articleTitle);
   article.appendChild(articleTitle);
@@ -144,10 +145,12 @@ function makeArticle(articleAttrs){
   article.appendChild(paragraphTwo);
   article.appendChild(paragraphThree);
   article.appendChild(expandButton);
+  article.appendChild(closeButton);
 
   article.classList.add('article')
   articleDate.classList.add('date')
   expandButton.classList.add('expandButton')
+  closeButton.classList.add('close')
 
   articleTitle.textContent = title;
   articleDate.textContent = date;
@@ -155,6 +158,7 @@ function makeArticle(articleAttrs){
   paragraphTwo.textContent = secondParagraph;
   paragraphThree.textContent = thirdParagraph;
   expandButton.textContent = 'Show More'
+  closeButton.textContent = ' X '
 
   expandButton.addEventListener('click', () => {
     article.classList.toggle('article-open')
@@ -165,6 +169,9 @@ function makeArticle(articleAttrs){
     }
     
   })
+  closeButton.addEventListener('click', () => {
+    article.classList.toggle('hide-article')
+  })
 
   return article;
 } 
@@ -174,6 +181,7 @@ data.map(articleObj => {
   articles.appendChild(article)
   return articles
 })
+
 
 // const myArticle = {
 //   title: 'This is the Best News Ever!"',
